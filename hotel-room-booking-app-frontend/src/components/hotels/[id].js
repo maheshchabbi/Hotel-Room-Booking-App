@@ -6,7 +6,7 @@ function HotelDetails() {
 
   const [hotel, setHotel] = useState(null);
   const [rooms, setRooms] = useState(null);
-  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT + '/api';
+  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT + 'http://13.235.245.252:5000';
 
   const getRooms = async () => {
     try {
