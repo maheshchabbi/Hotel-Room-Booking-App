@@ -2,30 +2,21 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-
-dotenv.config(); // Load .env before using it
-
 const app = express();
+
+// Bodyparser middleware
 app.use(cors());
 app.use(express.json());
+dotenv.config();
 
-console.log('🔍 MONGO_URI:', process.env.MONGO_URI);
+// DB Config
+const db = process.env.MONGO_URI;
 
-// Retry MongoDB connection if it fails
-const connectWithRetry = () => {
-  mongoose
-    .connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+// Connect to MongoDB
+mongoose
+    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('🚀 MongoDB Connected...'))
-    .catch((err) => {
-      console.error('⚠️ MongoDB connection error:', err);
-      setTimeout(connectWithRetry, 5000); // Retry every 5 seconds
-    });
-};
-
-connectWithRetry();
+    .catch((err) => console.log(err));
 
 // Routes
 const auth = require('./routes/api/auth');
@@ -33,6 +24,7 @@ const bookings = require('./routes/api/bookings');
 const hotels = require('./routes/api/hotels');
 const rooms = require('./routes/api/rooms');
 
+// Use Routes
 app.use('/api/auth', auth);
 app.use('/api/bookings', bookings);
 app.use('/api/hotels', hotels);
