@@ -9,7 +9,7 @@ const Login = () => {
     });
 
     const { email, password } = formData;
-    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT+'http://13.235.245.252:5000';
+    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT+'http://backend:5000';
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
