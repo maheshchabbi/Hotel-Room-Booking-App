@@ -3,6 +3,11 @@ const router = express.Router();
 const authController = require('../../controllers/auth');
 // const authMiddleware = require('../../middleware/auth');
 
+// Test route to check if /api/auth is accessible
+router.get('/', (req, res) => {
+  res.json({ message: 'Auth route is working! 🚀' });
+});
+
 // Route to register a new user
 router.post('/register', authController.register);
 
