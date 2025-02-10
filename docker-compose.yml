@@ -10,6 +10,8 @@ services:
   mongo:
     container_name: mongo
     image: mongo:latest
+    volumes:
+      - mongo_data:/data/db
     ports:
       - "27017:27017"
   backend:
@@ -19,3 +21,5 @@ services:
       - ./hotel-room-booking-app-backend/.env
     ports:
       - "5000:5000"
+volumes:
+  mongo_data:
