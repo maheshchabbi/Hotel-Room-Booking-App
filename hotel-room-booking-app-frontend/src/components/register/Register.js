@@ -12,7 +12,7 @@ const Register = () => {
     });
 
     const { name, email, password, adharcard, phone } = formData;
-    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT+'/api';
+    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT+'http://13.235.245.252:5000';
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
