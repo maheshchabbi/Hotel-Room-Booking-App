@@ -10,7 +10,7 @@ app.use(express.json());
 dotenv.config();
 
 // DB Config
-const db = process.env.MONGO_URL;
+const db = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose
