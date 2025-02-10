@@ -40,6 +40,4 @@ app.use('/api/rooms', rooms);
 
 // Start the server
 const port = process.env.PORT || 5000;
-app.listen(port, '0.0.0.0', () => 
-  console.log(`✈️  Server running at http://localhost:${port}`)
-);
+app.listen(port, () => console.log(`✈️  Server running on port http://localhost:${port}`));
