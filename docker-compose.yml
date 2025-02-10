@@ -9,6 +9,8 @@ services:
       - "3000:3000"
     depends_on:  # Fixed `depend_on`
       - backend
+    networks:
+      - mynetwork
 
   mongo:
     container_name: mongo
@@ -18,7 +20,9 @@ services:
       - mongo_data:/data/db
     ports:
       - "27017:27017"
-
+    networks:
+      - mynetwork
+      
   backend:
     container_name: backend
     build: ./hotel-room-booking-app-backend
@@ -28,6 +32,11 @@ services:
       - "5000:5000"
     depends_on:
       - mongo
-
+    networks:
+      - mynetwork
+      
+networks:
+  mynetwork:
+    driver: bridg      
 volumes:
   mongo_data:
