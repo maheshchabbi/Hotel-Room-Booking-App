@@ -8,13 +8,24 @@ const app = express();
 // Load environment variables
 dotenv.config();
 
-// CORS Configuration (Allow Frontend Access)
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://43.205.239.120:3000'], // Allow frontend access
+    origin: ['http://43.205.239.120:3000'], // Allow frontend access
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type'],
+    exposedHeaders: ['Content-Length', 'X-Requested-With'],
 };
 app.use(cors(corsOptions));
+
+// Enable WebSockets
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+    }
+});
+
 
 // Bodyparser middleware
 app.use(express.json());
