@@ -37,6 +37,6 @@ services:
       
 networks:
   mynetwork:
-    driver: bridg      
+    driver: bridge      
 volumes:
   mongo_data:
