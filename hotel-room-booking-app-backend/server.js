@@ -2,12 +2,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+
 const app = express();
 
-// Bodyparser middleware
-app.use(cors());
-app.use(express.json());
+// Load environment variables
 dotenv.config();
+
+// CORS Configuration (Allow Frontend Access)
+const corsOptions = {
+    origin: ['http://localhost:3000', 'http://43.205.239.120:3000'], // Allow frontend access
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true
+};
+app.use(cors(corsOptions));
+
+// Bodyparser middleware
+app.use(express.json());
 
 // DB Config
 const db = process.env.MONGO_URI;
