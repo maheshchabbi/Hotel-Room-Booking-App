@@ -34,7 +34,7 @@ const Hotels = () => {
     const [inDate, setInDate] = React.useState('');
     const [outDate, setOutDate] = React.useState('');
     const debouncedQuery = useDebounce(query, 250);
-    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT+'http://43.205.239.120:5000';
+    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT+'api';
 
     const LocationOptions = ['Hyderabad', 'Bangalore', 'Chennai', 'Mumbai', 'Delhi', 'Kolkata', 'Pune', 'Jaipur', 'Lucknow', 'Goa', 'Kochi', 'Chandigarh', 'Agra', 'Vizag', 'Nagpur', 'Indore', 'Patna', 'Bhopal', 'Vadodara', 'Ghaziabad', 'Coimbatore', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot'];
     const TypeOptions = ['Classic', 'Club', 'Deluxe', 'Suite', 'Presidential', 'Luxury', 'Superior', 'Standard'];
